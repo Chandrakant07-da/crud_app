@@ -60,7 +60,7 @@ exports.login= async (req,res)=>{
         else{
             const token=jwt.sign({id:user._id},process.env.TOKEN_SECRET)
             res.send(token)
-            res.send("logged succesfully")
+            res.send("Logged Succesfully")
         }
 
     }catch(err)
