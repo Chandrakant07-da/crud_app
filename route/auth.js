@@ -1,12 +1,20 @@
-const router=require('express').Router()
-const Controller=require('../controller/user')
-const verify=require('../routes/authVerify')
+const router = require('express').Router()
+const verify = require('./authVerify')
+const Collection = require('../controller/controller')
+
+router.post('/register', Collection.signUp )
+
+router.post('/login', Collection.logIn)
+
+router.get('/getAllUsers', verify, Collection.getAllUsers)
 
 
-router.post('/signUp',Controller.signUp)
-router.post('/login',Controller.login)
-router.get('/get',verify,Controller.getLearner)
-router.post('/create',verify,Controller.createCourse)
-router.get('/getCourse',verify,Controller.getCourse)
+// course
 
-module.exports=router
+
+router.post('/addCourse',verify, Collection.addCourse)
+
+router.get('/getCourse', verify, Collection.getCourse)
+
+
+module.exports = router
